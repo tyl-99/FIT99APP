@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CircularImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+
+    <style name="text1" parent="">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/colorBlue3</item>
+    </style>
+    <style name="Theme.Material3.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BoldWhite">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Style for text with Montserrat Bold font and blue3 text color -->
+    <style name="BoldBlue3">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/colorBlue3</item>
+    </style>
+
+    <!-- styles.xml -->
+
+
+    <!-- Style for text with Montserrat Medium font and white text color -->
+    <style name="MediumWhite">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <!-- Style for text with Montserrat Medium font and blue3 text color -->
+    <style name="MediumBlue3">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/colorBlue3</item>
+    </style>
+
+    <style name="button_full">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
+    <!-- Style for CardInputWidget -->
+
+
+</resources>

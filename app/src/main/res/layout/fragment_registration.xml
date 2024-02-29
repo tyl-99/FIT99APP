@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack"
+    tools:context=".RegistrationFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="25dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/cirlce"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/CircularImageView"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Registration"
+                android:textColor="@color/colorBlue3"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto"
+                android:text="Create Your Account"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Name"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/name_label2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Email"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/myname" />
+
+            <TextView
+                android:id="@+id/name_label3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Password"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/myemail" />
+
+            <TextView
+                android:id="@+id/name_label4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Confirm Password"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mypassword" />
+
+            <TextView
+                android:id="@+id/name_label6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Height ( CM )"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/male" />
+
+            <TextView
+                android:id="@+id/name_label7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Weight ( Kg )"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/height" />
+
+            <TextView
+                android:id="@+id/name_label5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:shadowColor="#000000"
+                android:text="Gender"
+                android:textColor="@color/colorBlue3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mypassword2" />
+
+            <EditText
+                android:id="@+id/myname"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Your Name"
+                android:inputType="text"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_label"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <EditText
+                android:id="@+id/myemail"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Your Email"
+                android:inputType="text"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_label2"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <EditText
+                android:id="@+id/mypassword"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/view"
+                android:drawableTint="#C5C5C5"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_label3"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <EditText
+                android:id="@+id/mypassword2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:drawableEnd="@drawable/view"
+                android:drawableTint="#C5C5C5"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_label4"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Height"
+                android:inputType="text"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_label6"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_light"
+                android:hint="Enter Weight"
+                android:inputType="text"
+                android:paddingTop="8dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9E9E9E"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_label7"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <TextView
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gender_shape"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingLeft="15dp"
+                android:paddingTop="7dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="7dp"
+                android:shadowColor="#000000"
+                android:text="Male"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_label5" />
+
+            <TextView
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/gender_shape"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingLeft="15dp"
+                android:paddingTop="7dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="7dp"
+                android:shadowColor="#000000"
+                android:text="Female"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/male"
+                app:layout_constraintTop_toBottomOf="@+id/name_label5" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/border_radius_exercise_mode_white"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="Register"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

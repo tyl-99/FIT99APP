@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- Background Layer -->
+    <item>
+        <shape android:shape="rectangle" >
+            <solid android:color="#000000" /> <!-- Black background -->
+        </shape>
+    </item>
+
+    <!-- Question Mark Layer -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/question_mark" /> <!-- Reference to question mark image -->
+    </item>
+</layer-list>

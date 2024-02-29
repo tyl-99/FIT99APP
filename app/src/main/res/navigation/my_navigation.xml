@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/exerciseListFragment">
+
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="ExerciseListFragment"
+        android:label="ExerciseListFragment" >
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exerciseMainFragment"
+            app:destination="@id/exerciseMainFragment" />
+        <argument
+            android:name="selectedCategory"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseDetailsFragment"
+        android:name="ExerciseDetailsFragment"
+        android:label="ExerciseDetailsFragment" >
+        <action
+            android:id="@+id/action_exerciseDetailsFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_exerciseDetailsFragment_to_equipmentDetailsFragment"
+            app:destination="@id/equipmentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/equipmentListFragment"
+        android:name="EquipmentListFragment"
+        android:label="EquipmentListFragment" >
+        <action
+            android:id="@+id/action_equipmentListFragment_to_equipmentDetailsFragment"
+            app:destination="@id/equipmentDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/equipmentDetailsFragment"
+        android:name="com.example.fit99.EquipmentDetailsFragment"
+        android:label="fragment_equipment_details"
+        tools:layout="@layout/fragment_equipment_details" >
+        <action
+            android:id="@+id/action_equipmentDetailsFragment_to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+        <action
+            android:id="@+id/action_equipmentDetailsFragment_to_equipmentListFragment"
+            app:destination="@id/equipmentListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseMainFragment"
+        android:name="ExerciseMainFragment"
+        android:label="ExerciseMainFragment" >
+        <action
+            android:id="@+id/action_exerciseMainFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/equipmentDetectionFragment"
+        android:name="EquipmentDetectionFragment"
+        android:label="EquipmentDetectionFragment" >
+        <action
+            android:id="@+id/action_equipmentDetectionFragment_to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+        <action
+            android:id="@+id/action_equipmentDetectionFragment_to_equipmentDetailsFragment"
+            app:destination="@id/equipmentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectExerciseFragment"
+        android:name="SelectExerciseFragment"
+        android:label="SelectExerciseFragment" >
+        <action
+            android:id="@+id/action_selectExerciseFragment_to_workoutConfirmationFragment"
+            app:destination="@id/workoutConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutConfirmationFragment"
+        android:name="com.example.fit99.WorkoutConfirmationFragment"
+        android:label="WorkoutConfirmationFragment" >
+        <action
+            android:id="@+id/action_workoutConfirmationFragment_to_workoutFragment2"
+            app:destination="@id/workoutFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.fit99.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment2_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_equipmentDetectionFragment"
+            app:destination="@id/equipmentDetectionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_equipmentListFragment"
+            app:destination="@id/equipmentListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseDetailsFragment"
+            app:destination="@id/exerciseDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_self"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseMainFragment"
+            app:destination="@id/exerciseMainFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_equipmentDetailsFragment"
+            app:destination="@id/equipmentDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_workoutFragment2"
+            app:destination="@id/workoutFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment2"
+        android:name="com.example.fit99.workoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout" >
+        <action
+            android:id="@+id/action_workoutFragment2_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_workoutFragment2_to_selectExerciseFragment"
+            app:destination="@id/selectExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutDetailsFragment"
+        android:name="com.example.fit99.WorkoutDetailsFragment"
+        android:label="WorkoutDetailsFragment" >
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_workoutSessionFragment"
+            app:destination="@id/workoutSessionFragment" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_editWorkoutFragment"
+            app:destination="@id/editWorkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutSessionFragment"
+        android:name="com.example.fit99.WorkoutSessionFragment"
+        android:label="fragment_workout_session"
+        tools:layout="@layout/fragment_workout_session" >
+        <action
+            android:id="@+id/action_workoutSessionFragment_to_workoutFragment2"
+            app:destination="@id/workoutFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.example.fit99.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment2_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editWorkoutFragment"
+        android:name="com.example.fit99.EditWorkoutFragment"
+        android:label="fragment_edit_workout"
+        tools:layout="@layout/fragment_edit_workout" >
+        <action
+            android:id="@+id/action_editWorkoutFragment_to_editSelectExerciseFragment"
+            app:destination="@id/editSelectExerciseFragment" />
+        <action
+            android:id="@+id/action_editWorkoutFragment_to_workoutDetailsFragment"
+            app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_editWorkoutFragment_to_workoutFragment2"
+            app:destination="@id/workoutFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSelectExerciseFragment"
+        android:name="EditSelectExerciseFragment"
+        android:label="EditSelectExerciseFragment" >
+        <action
+            android:id="@+id/action_editSelectExerciseFragment_to_editWorkoutFragment"
+            app:destination="@id/editWorkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/announcementFragment"
+        android:name="AnnouncementFragment"
+        android:label="AnnouncementFragment" >
+        <action
+            android:id="@+id/action_announcementFragment_to_announcementNoticeFragment"
+            app:destination="@id/announcementNoticeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/announcementNoticeFragment"
+        android:name="com.example.fit99.AnnouncementNoticeFragment"
+        android:label="fragment_announcement_notice"
+        tools:layout="@layout/fragment_announcement_notice" >
+        <action
+            android:id="@+id/action_announcementNoticeFragment_to_announcementFragment"
+            app:destination="@id/announcementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userStatisticsFragment"
+        android:name="com.example.fit99.UserStatisticsFragment"
+        android:label="UserStatisticsFragment" >
+    </fragment>
+
+</navigation>

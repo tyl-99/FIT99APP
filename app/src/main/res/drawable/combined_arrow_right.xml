@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Large background arrow -->
+    <item
+        android:drawable="@drawable/circle_to_right"
+    android:gravity="center"
+        android:width="70dp"
+        android:height="70dp"/>
+
+    <!-- Small arrow in the center -->
+    <item
+        android:drawable="@drawable/arrow_right"
+    android:gravity="center"
+    android:width="30dp"
+    android:height="15dp" />
+</layer-list>

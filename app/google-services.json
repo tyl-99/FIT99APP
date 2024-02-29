@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "477953456741",
+    "project_id": "fit99-9dacb",
+    "storage_bucket": "fit99-9dacb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477953456741:android:7351e7d053a2ce94eba48c",
+        "android_client_info": {
+          "package_name": "com.example.fit99"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477953456741-ejdvjns0sh233n8o8nr5i7rmmklqhgjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8JCt8_MARMw30cvONbeb-FFaNiuYwOxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477953456741-ejdvjns0sh233n8o8nr5i7rmmklqhgjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

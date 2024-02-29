@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background -->
+    <item android:drawable="@android:color/transparent" />
+
+    <!-- Border -->
+    <item
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        android:bottom="2dp">
+        <shape
+            android:shape="rectangle">
+            <stroke
+                android:width="3dp"
+                android:color="@color/colorBlue3" /> <!-- Change to your blue color resource -->
+            <corners
+                android:radius="0dp" /> <!-- You can set corner radius if needed -->
+        </shape>
+    </item>
+</layer-list>

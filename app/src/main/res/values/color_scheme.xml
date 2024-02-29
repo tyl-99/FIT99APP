@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBlack">#000000</color> <!-- Black -->
+    <color name="colorWhite">#FFFFFF</color> <!-- White -->
+    <color name="colorGrey">#808080</color> <!-- Grey -->
+    <color name="colorBlue1">#40577D</color> <!-- A shade of blue-grey -->
+    <color name="colorBlue2">#044EDF</color> <!-- A shade of blue -->
+    <color name="colorBlue3">#0378E5</color> <!-- Another shade of blue -->
+</resources>
