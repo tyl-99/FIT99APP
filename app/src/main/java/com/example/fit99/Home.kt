@@ -44,7 +44,7 @@ class Home : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         val appPreferences = AppPreferences(this)
-
+        navController.navigate(R.id.homeFragment)
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->

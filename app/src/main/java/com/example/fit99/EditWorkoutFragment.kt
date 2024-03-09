@@ -1,5 +1,6 @@
 package com.example.fit99
 import AppPreferences
+import EditWorkoutExerciseDetailAdapter
 import WorkoutExerciseAdapter
 import WorkoutExerciseDetailAdapter
 import android.R
@@ -30,7 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class EditWorkoutFragment : Fragment(), ItemMoveCallbackListener{
     private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-    private lateinit var adapter: WorkoutExerciseDetailAdapter
+    private lateinit var adapter: EditWorkoutExerciseDetailAdapter
     private lateinit var selectedExerciseView: RecyclerView
     private lateinit var itemTouchHelper: ItemTouchHelper
     private lateinit var name : TextView
@@ -90,11 +91,12 @@ class EditWorkoutFragment : Fragment(), ItemMoveCallbackListener{
 
             if(workoutBundle.isEmpty()){
 
-                selectedExerciseView.adapter = WorkoutExerciseAdapter(ArrayList(workoutExercises), ArrayList(exercises), requireActivity())
+                adapter = EditWorkoutExerciseDetailAdapter(workoutBundle,ArrayList(exercises), requireActivity())
+                selectedExerciseView.adapter = adapter
             }
             else{
-                Log.d("kere",ArrayList(exercises).size.toString())
-                selectedExerciseView.adapter = WorkoutExerciseAdapter(workoutBundle, ArrayList(exercises), requireActivity())
+                adapter = EditWorkoutExerciseDetailAdapter(workoutBundle,ArrayList(exercises), requireActivity())
+                selectedExerciseView.adapter = adapter
             }
 
 
@@ -164,7 +166,7 @@ class EditWorkoutFragment : Fragment(), ItemMoveCallbackListener{
 
                     Log.d("EditWorkout",workout.mode.toString())
                     workout.name = name.text.toString()
-                    val myadapter : WorkoutExerciseAdapter = selectedExerciseView.adapter as WorkoutExerciseAdapter
+                    val myadapter : EditWorkoutExerciseDetailAdapter = selectedExerciseView.adapter as EditWorkoutExerciseDetailAdapter
                     val exerciseList = myadapter.getWorkoutExerciseList()
 
 
@@ -314,7 +316,7 @@ class EditWorkoutFragment : Fragment(), ItemMoveCallbackListener{
 
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        (selectedExerciseView.adapter as? WorkoutExerciseAdapter)?.onItemMove(fromPosition, toPosition)
+        (selectedExerciseView.adapter as? EditWorkoutExerciseDetailAdapter)?.onItemMove(fromPosition, toPosition)
     }
 
 

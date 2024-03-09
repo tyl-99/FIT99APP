@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="23dp"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Welcome to FIT99"
             android:textColor="@color/colorBlue3"
             app:layout_constraintStart_toStartOf="parent"

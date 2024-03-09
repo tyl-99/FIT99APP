@@ -20,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fit99.classes.DoneWorkout
+import com.example.fit99.classes.Exercise
 import com.example.fit99.classes.Workout
 import com.example.fit99.classes.WorkoutExerciseView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,10 +33,6 @@ import java.util.Locale
 
 class WorkoutSessionFragment : Fragment() {
     private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +51,6 @@ class WorkoutSessionFragment : Fragment() {
         var sett = false
         var first = true
         var pyramid = true
-        var jini = 0
 
 
         //screen
@@ -86,9 +82,7 @@ class WorkoutSessionFragment : Fragment() {
 
                 val exercises = ArrayList(myexercise)
 
-                //content
                 val nameex = view.findViewById<TextView>(R.id.nameex)
-                val content = view.findViewById<ScrollView>(R.id.content)
                 val videoView = view.findViewById<VideoView>(R.id.videoView)
                 val steps = view.findViewById<RecyclerView>(R.id.steps);
                 val sets = view.findViewById<TextView>(R.id.sets);
@@ -102,13 +96,12 @@ class WorkoutSessionFragment : Fragment() {
                     findNavController().navigate(R.id.action_workoutSessionFragment_to_workoutFragment2)
                 }
 
+                //content2 is 2nd screen ( used to show rest interval time)
                 val content2 = view.findViewById<ScrollView>(R.id.content2)
                 steps.layoutManager = LinearLayoutManager(activity)
                 steps.setHasFixedSize(true)
 
                 duration.visibility = View.INVISIBLE
-
-
 
                 var exercise = exercises.get(0)
 
@@ -124,22 +117,17 @@ class WorkoutSessionFragment : Fragment() {
                     label.text = "Duration"
                     reps.text = "${exercise.duration}"
                 }
+
                 val videoUri = Uri.parse(exercise.imageUrl + "?alt=media&token=ea2f07c3-17ad-4d1a-907b-6a7c008608cc")
                 videoView.setVideoURI(videoUri)
                 videoView.setOnPreparedListener { mediaPlayer ->
-
-
                     mediaPlayer.isLooping = true
                     mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
-
                     videoView.start()
-
-
                 }
 
                 if (exercise.mode == "Duration") {
                     duration.visibility = View.VISIBLE
-                    Log.d("jini","amagi")
                     mycountdown.create(0, exercises.get(ex).duration.toInt(), CircularCountdown.TYPE_SECOND)
                         .listener(object : CircularListener {
                             override fun onTick(progress: Int) {
@@ -158,23 +146,19 @@ class WorkoutSessionFragment : Fragment() {
                         .start()
                 }
 
-
-
-
-
                 var back = false
                 var timeshow = false
                 var myremove = 2
 
+                var subexercise = WorkoutExerciseView()
 
                 next.setOnClickListener {
                     if (!pyramid) {
 
-                        if(jini + 1 > exercises.get(ex).sets &&exercises.size == 1){
+                        if(exercises.size == 0 && !main){
                             Toast.makeText(context, "You completed your workout", Toast.LENGTH_SHORT).show()
                             back = true
 
-                            // Assuming you have the userID or a way to get the user's document path
                             val userID = appPreferences.getUserEmail().toString()
                             val db = FirebaseFirestore.getInstance()
                             db.collection("Users")
@@ -183,14 +167,9 @@ class WorkoutSessionFragment : Fragment() {
                                 .get()
                                 .addOnSuccessListener { documents ->
                                     if (documents.isEmpty) {
-                                        // Handle case where no documents are found
                                         Log.d("Firestore", "No user found with this email")
                                     } else {
-                                        // Assuming you want to use the first document found
                                         val userDocRef = documents.documents.first().reference
-
-                                        // Now you can use 'userDocRef' as needed
-                                        // For example, adding a DoneWorkout record:
                                         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
                                         val doneWorkout = DoneWorkout(date = currentDate, workout = workout_name) // replace with actual workout name
 
@@ -215,20 +194,13 @@ class WorkoutSessionFragment : Fragment() {
 
                         }
 
-
                         duration.visibility = View.INVISIBLE
 
-
-
                         val handler = Handler()
-
                         val delayMillis = 500
-
                         handler.postDelayed({
 
-
                             var nameex = view.findViewById<TextView>(R.id.nameex)
-
                             var videoView = view.findViewById<VideoView>(R.id.videoView)
                             var steps = view.findViewById<RecyclerView>(R.id.steps);
                             var sets = view.findViewById<TextView>(R.id.sets);
@@ -238,35 +210,29 @@ class WorkoutSessionFragment : Fragment() {
                             var label = view.findViewById<TextView>(R.id.label_reps)
                             var duration = view.findViewById<TextView>(R.id.duration)
 
-
-
                             if (main) {
-                                if (jini + 2 > exercises.get(ex).sets && exercises.size>1) {
-                                    jini = 0
+                                if (exercises.get(ex).sets==1) {
                                     exercises.remove(exercises.get(ex))
                                 }
+                                else if(exercises.size==1 && exercises.get(ex).sets == 1){
+                                    subexercise = exercises.get(ex)
+                                }
                                 else{
-                                    jini++
+                                    exercises.get(ex).sets-=1
                                 }
 
                             }
 
-
-
-
-                            if (back) {
-                                return@postDelayed
-
+                            var exercise = WorkoutExerciseView()
+                            if(exercises.size==0){
+                                exercise = subexercise
+                            }
+                            else{
+                                exercise = exercises.get(ex)
                             }
 
-                            Log.d("Pyramid",exercises.size.toString())
+                            sets.text = exercise.sets.toString()
 
-                            sets.text = (exercises.get(ex).sets - jini.toInt()).toString()
-
-
-                            // Create a Handler
-                            Log.d("Jini", ex.toString()) //0
-                            val exercise = exercises.get(ex)
                             if (main) {
 
                                 if (!timeshow) {
@@ -278,15 +244,13 @@ class WorkoutSessionFragment : Fragment() {
                                 if (exercises.size == 0) {
                                     return@postDelayed
                                 }
-                                Log.d("Jini", exercise.exerciseName.toString())
-                                Log.d("Jini", exercise.mode.toString())
+
                                 steps.adapter = StepAdapter(exercise.steps)
                                 nameex.text = exercise.exerciseName.toString()
 
                                 if (set == exercise.sets) {
                                     exercises.remove(exercise)
                                 }
-
 
                                 sets.text = (exercise.sets - set).toString()
 
@@ -305,14 +269,11 @@ class WorkoutSessionFragment : Fragment() {
                                     mediaPlayer.isLooping = true
                                     mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
                                     videoView.start()
-
                                 }
-
 
                             } else {
 
                                 if (exercise.mode == "Duration") {
-
                                     duration.visibility = View.VISIBLE
                                     mycountdown.create(
                                         0,
@@ -325,10 +286,7 @@ class WorkoutSessionFragment : Fragment() {
                                                 val timeRemaining =
                                                     (exercise.duration.toInt() - progress).toString()
                                                 duration.text = timeRemaining
-
-
                                             }
-
                                             override fun onFinish(
                                                 newCycle: Boolean,
                                                 cycleCount: Int
@@ -344,34 +302,10 @@ class WorkoutSessionFragment : Fragment() {
                             }
 
 
-
-
-
-
-                            if (exercises.size == 0) {
-                                back = true
-                            }
-
-                            if (set == exercise.sets && exercises.size == 1) {
-
-                                Toast.makeText(
-                                    context,
-                                    "You completed your workout",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                back = true
-
-                            }
                         }, delayMillis.toLong())
-
-                        if (back) {
-                            return@setOnClickListener
-                        }
 
                         val content = view.findViewById<ScrollView>(R.id.content)
                         val content2 = view.findViewById<ScrollView>(R.id.content2)
-
-
 
                         if (main) {
 
@@ -386,14 +320,14 @@ class WorkoutSessionFragment : Fragment() {
                         if(!back){
                             circularView.create(
                                 0,
-                                exercises.get(ex).interval.toInt(),
+                                exercise.interval.toInt(),
                                 CircularCountdown.TYPE_SECOND
                             )
                                 .listener(object : CircularListener {
                                     override fun onTick(progress: Int) {
                                         // Update the TextView with the remaining time
                                         val timeRemaining =
-                                            (exercises.get(ex).interval.toInt() - progress).toString()
+                                            (exercise.interval.toInt() - progress).toString()
                                         timerTextView.text = timeRemaining
 
 
@@ -408,32 +342,22 @@ class WorkoutSessionFragment : Fragment() {
 
                         }
 
-
-
-                            // Slide content out to the left
                             content2.animate().translationX(0f).setDuration(1000).withEndAction {
                                 content.translationX = screenWidth.toFloat()
                                 main = false
 
-
                             }.start()
-                        } else if (!main) {
-                            // Slide content in from the right
-
+                        }
+                        else if (!main) {
                             content2.animate().translationX(-screenWidth.toFloat())
                                 .setDuration(1000).start()
 
-
-                            // Slide content2 out to the left
                             content.animate().translationX(0f).setDuration(1000).withEndAction {
                                 content2.translationX = screenWidth.toFloat()
                                 main = true
 
-
                             }.start()
                         }
-
-
                     }
                     else{
 
@@ -476,42 +400,13 @@ class WorkoutSessionFragment : Fragment() {
                                     Log.w("Firestore", "Error querying documents", e)
                                 }
                         }
-                        //Log.d("jinitaimei",set.toString())
-
-                        var remove = false
-
-                        if (set == exercise.sets-1 && main) {
-                            if(exercises.size==1){
-                                myremove  = 0
-                            }
-                            else{
-                                //comment can work
-                                exercises.removeAt(ex)
-                                remove = true
-                                ex
-                                //Log.d("jinitaimei",exercises.toString())
-                                Log.d("jinitaimei",exercises.toString())
-                            }
-
-                        }
 
                         if (back) {
                             return@setOnClickListener
                         }
 
-
-
-                        if (set == exercise.sets && exercises.size-1 == 1 ) {
-                           //back = true
-                        }
-
                         Log.d("WorkoutSession",pyramid.toString())
                         duration.visibility = View.INVISIBLE
-
-                        if (!sett) {
-                            ex++
-                            sett = true
-                        }
 
                         val handler = Handler()
 
@@ -534,31 +429,35 @@ class WorkoutSessionFragment : Fragment() {
 
 
                             if (main) {
-                                if (ex + 1 > exercises.size - 1 && !remove) {
+                                if (ex + 1 == exercises.size) {
                                     ex = 0
-                                    set += 1
+                                    var exerciseIndex = ArrayList<WorkoutExerciseView>()
+                                    for(exercise in exercises){
+                                        exercise.sets--
+                                        if(exercise.sets==0){
+                                            exerciseIndex.add(exercise)
+                                        }
+                                    }
+                                    for (exerciseToRemove in exerciseIndex) {
+                                        exercises.remove(exerciseToRemove)
+                                    }
                                 }
-                                else if(!first && remove){
-                                    Log.d("lol","hahahai")
-                                } else if (!first) {
-                                    ex++
+                                else if(exercises.size==1 && exercises.get(0).sets==1){
+                                    subexercise = exercises.get(0)
                                 }
                                 else{
-                                    first = false
+                                    ex++
                                 }
                             }
 
-                            /*if(remove && ex!=0){
-                                ex--
-                            }*/
-                            // Create a Handler
+                            var exercise = WorkoutExerciseView()
 
-                            exercise = exercises.get(ex)
-                            val exercise = exercises.get(ex)
-                            Log.d("Jinitaimei", ex.toString()) //0
-
-                            Log.d("Jinitaimei", exercise.exerciseName.toString()) //0
-
+                            if(exercises.size==1 && exercises.get(0).sets==1){
+                                exercise = subexercise
+                            }
+                            else{
+                                exercise = exercises.get(ex)
+                            }
                             if (main) {
 
                                 if (!timeshow) {
@@ -568,14 +467,9 @@ class WorkoutSessionFragment : Fragment() {
                                 }
 
 
-                                // Your code to run after the delay
-                                //
-                                Log.d("Jini", exercise.exerciseName.toString())
-                                Log.d("Jini", exercise.mode.toString())
                                 steps.adapter = StepAdapter(exercise.steps)
                                 nameex.text = exercise.exerciseName.toString()
 
-                                Log.d("canyon",set.toString())
 
                                 if(exercises.size==1){
                                     sets.text = ((exercise.sets - set)).toString()
@@ -603,12 +497,7 @@ class WorkoutSessionFragment : Fragment() {
 
                                 }
 
-
-
                             } else {
-
-
-
 
                                 if (exercise.mode == "Duration") {
 
@@ -642,32 +531,16 @@ class WorkoutSessionFragment : Fragment() {
                                 timeshow = true
                             }
 
-                            if(myremove==0){
-                                back = true
-                            }
-                            if (exercises.size == 1) {
-                                myremove = 0
-                                return@postDelayed
-                            }
 
 
 
                         }, delayMillis.toLong())
 
-                        if(exercises.size == 0){
-                            return@setOnClickListener
-                        }
-
-
-
                         val content = view.findViewById<ScrollView>(R.id.content)
                         val content2 = view.findViewById<ScrollView>(R.id.content2)
 
-
-
                         if (main && !back) {
                             val exercise = exercises.get(ex)
-                            Log.d("Jinitaimei",exercises.toString())
 
                             content.animate().translationX(-screenWidth.toFloat()).setDuration(1000)
                                 .start()
@@ -675,9 +548,7 @@ class WorkoutSessionFragment : Fragment() {
                             val circularView: CircularCountdown =
                                 view.findViewById(R.id.circularCountdown)
                             val timerTextView: TextView =
-                                view.findViewById(R.id.countdownText) // TextView to display time
-
-
+                                view.findViewById(R.id.countdownText)
 
                             circularView.create(
                                 0,
@@ -702,7 +573,6 @@ class WorkoutSessionFragment : Fragment() {
                                 .start()
 
 
-                            // Slide content out to the left
                             content2.animate().translationX(0f).setDuration(1000).withEndAction {
                                 content.translationX = screenWidth.toFloat()
                                 main = false
@@ -710,7 +580,6 @@ class WorkoutSessionFragment : Fragment() {
 
                             }.start()
                         } else if (!main and !back) {
-                            // Slide content in from the right
 
                             content2.animate().translationX(-screenWidth.toFloat())
                                 .setDuration(1000).start()
@@ -726,11 +595,6 @@ class WorkoutSessionFragment : Fragment() {
                         }
                     }
                 }
-
-
-
-
-
             }
         )
 

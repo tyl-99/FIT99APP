@@ -149,7 +149,8 @@ class WorkoutDetailsFragment : Fragment(){
                                                 name = exerciseName,
                                                 imageResId = visualURL,
                                                 mode = exercise.mode,
-                                                reps = jini.toString()
+                                                reps = jini.toString(),
+                                                sets = exercise.sets.toString()
                                             )
                                             detailsMap[exerciseName] = exercisePreview
                                         }

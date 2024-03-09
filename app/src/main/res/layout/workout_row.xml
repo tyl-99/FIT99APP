@@ -5,7 +5,10 @@
     android:id="@+id/cont"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border_topbot"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/workout_row_border_radius"
+    android:backgroundTint="#2668D5"
     android:paddingTop="15dp"
     android:paddingBottom="20dp">
 
@@ -13,11 +16,14 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="My Chest Workout"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +31,11 @@
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="5 Exercises"
-        android:textColor="@color/colorBlue3"
+        android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

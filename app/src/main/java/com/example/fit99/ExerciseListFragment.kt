@@ -113,7 +113,7 @@ class ExerciseListFragment : Fragment(), CategoryAdapter.CategoryClickListener {
 
 
     private fun loadWorkoutsAndCountExercises() {
-        db.collection("Workouts")
+        db.collection("Workouts").limit(100)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
