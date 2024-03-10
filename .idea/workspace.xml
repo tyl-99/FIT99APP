@@ -399,21 +399,7 @@
       <option name="project" value="LOCAL" />
       <updated>1710039120508</updated>
     </task>
-    <task id="LOCAL-00007" summary="commit ignore">
-      <created>1710039725481</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1710039725481</updated>
-    </task>
-    <task id="LOCAL-00008" summary="commit ignore">
-      <created>1710039940248</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1710039940248</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +413,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main_code" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
