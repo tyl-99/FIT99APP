@@ -99,38 +99,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ApkExportedModule&quot;: &quot;FIT99.app&quot;,
-    &quot;BundleExportedModule&quot;: &quot;FIT99.app&quot;,
-    &quot;DEBUGGABLE_DEVICE&quot;: &quot;huawei-vce_l22-MLTDU19118004036&quot;,
-    &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.example.fit99&quot;,
-    &quot;DEBUGGER_ID&quot;: &quot;Auto&quot;,
-    &quot;ExportApk.ApkPathForFIT99.app&quot;: &quot;D:\\FIT99V2\\app&quot;,
-    &quot;ExportBundle.BundlePathForFIT99.app&quot;: &quot;D:\\FIT99\\app&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHOW_ALL_PROCESSES&quot;: &quot;false&quot;,
-    &quot;ToolWindowLogcat.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;android-custom-viewC:/Users/user/AppData/Local/Android/Sdk/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;D:/FIT99/app/src/main/res/drawable&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/FIT99V2/app&quot;,
-    &quot;memory.settings.postsync.last.time.stamp&quot;: &quot;1700808955180&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ApkExportedModule": "FIT99.app",
+    "BundleExportedModule": "FIT99.app",
+    "DEBUGGABLE_DEVICE": "huawei-vce_l22-MLTDU19118004036",
+    "DEBUGGABLE_PROCESS": "com.example.fit99",
+    "DEBUGGER_ID": "Auto",
+    "ExportApk.ApkPathForFIT99.app": "D:\\FIT99V2\\app",
+    "ExportBundle.BundlePathForFIT99.app": "D:\\FIT99\\app",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHOW_ALL_PROCESSES": "false",
+    "ToolWindowLogcat.ShowToolbar": "false",
+    "android-custom-viewC:/Users/user/AppData/Local/Android/Sdk/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "last_directory_selection": "D:/FIT99/app/src/main/res/drawable",
+    "last_opened_file_path": "D:/FIT99V2",
+    "memory.settings.postsync.last.time.stamp": "1700808955180",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "vcs.Git"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ExportApk.BuildVariants&quot;: [
-      &quot;debug&quot;
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "debug"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.-949127961">
       <recent name="com.example.fit99" />
@@ -399,7 +399,28 @@
       <option name="project" value="LOCAL" />
       <updated>1710039120508</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit ignore">
+      <created>1710040389309</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710040389309</updated>
+    </task>
+    <task id="LOCAL-00008" summary="commit ignore">
+      <created>1710040395756</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710040395756</updated>
+    </task>
+    <task id="LOCAL-00009" summary="commit ignore">
+      <created>1710040609109</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710040609109</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,7 +434,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="main_code" />
                       </list>
                     </value>
                   </entry>
