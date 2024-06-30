@@ -3,6 +3,7 @@ package com.example.fit99
 import AppPreferences
 import StringAdapter
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
@@ -48,6 +50,7 @@ class ProfileFragment : Fragment() {
     private lateinit var distancev :TextView
     private lateinit var caloriesv :TextView
     private lateinit var bodyfatv :TextView
+    private lateinit var db: FirebaseFirestore
 
     // Configure the Google Fit API
     private val fitnessOptions: FitnessOptions = FitnessOptions.builder()
@@ -62,7 +65,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
+        db = FirebaseFirestore.getInstance()
         stepsv =view.findViewById(R.id.steps)
         distancev =view.findViewById(R.id.distance)
         caloriesv =view.findViewById(R.id.calories)
@@ -277,7 +280,7 @@ class ProfileFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupUI(view: View) {
-        val setting: TextView = view.findViewById(R.id.settings)
+        val logout: TextView = view.findViewById(R.id.getlogout)
         val propic = view.findViewById<ImageView>(R.id.propic)
         val name = view.findViewById<TextView>(R.id.name)
         val recent = view.findViewById<RecyclerView>(R.id.recentworkout)
@@ -286,9 +289,36 @@ class ProfileFragment : Fragment() {
         recent.layoutManager = LinearLayoutManager(activity)
         recent.setHasFixedSize(true)
 
-        setting.setOnClickListener {
-            //findNavController().navigate(R.id.action_profileFragment2_to_userPersonalFragment)
+        logout.setOnClickListener {
+            val appPreferences = AppPreferences(requireContext())
+            val email = appPreferences.getUserEmail().toString()
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("Yes") { _, _ ->
+                    appPreferences.logout()
+
+                    // Update the FCM token to "none"
+                    updateFCMTokenToNone(email) { success ->
+                        if (success) {
+                            // FCM token updated to "none" successfully
+                            val intent = Intent(requireActivity(), Authentication::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        } else {
+                            // Handle the case where updating the token to "none" failed
+                            Toast.makeText(requireContext(), "Failed to update FCM token.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(requireActivity(), Authentication::class.java)
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                    }
+                }
+                .setNegativeButton("No", null)
+                .show()
         }
+
 
         val appPreferences = AppPreferences(requireContext())
         val imageurl = "https://firebasestorage.googleapis.com/v0/b/fit99-9dacb.appspot.com/o/User%2F${appPreferences.getUserEmail()}.jpg?alt=media&token=0b498fee-36fd-4833-96bd-53ddb33ce78f"
@@ -330,5 +360,35 @@ class ProfileFragment : Fragment() {
         name.text = appPreferences.getName().toString()
 
     }
+
+    private fun updateFCMTokenToNone(userEmail: String, callback: (Boolean) -> Unit) {
+        val usersRef = db.collection("Users")
+        val query = usersRef.whereEqualTo("email", userEmail)
+
+        query.get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val userDocument = documents.first()
+                    val userId = userDocument.id
+
+                    usersRef.document(userId)
+                        .update("fcm", "none")
+                        .addOnSuccessListener {
+                            callback(true)
+                        }
+                        .addOnFailureListener { exception ->
+                            callback(false)
+                        }
+                } else {
+                    // Handle the case where no user with the provided email is found
+                    callback(false)
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors during the Firestore query
+                callback(false)
+            }
+    }
+
 
 }

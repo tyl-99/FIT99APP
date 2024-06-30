@@ -56,30 +56,23 @@ class EquipmentDetectionFragment : Fragment() {
         checkCameraPermission()
 
         equipmentList = arrayListOf(
-            "Treadmill",
-            "Smith Machine",
-            "Lat Pulldown-Seated Row Dual Machine",
-            "Pectoral Fly Machine",
-            "Chest Press Hammer",
-            "Multipurpose Machine",
             "Ab Rotation Machine",
-            "Leg Press Machine",
-            "Elliptical",
-            "Stationary Bike",
             "Abs-Back Extension Dual Machine",
-            "Rowing Machine",
-            "Dipping Station",
-            "Leg-Hamstring Curl Machine",
-            "Seated Calf Raise",
-            "Leg Abduction Machine",
-            "Preacher Curl",
-            "Assisted Dips and Pull Ups Station",
-            "Dumbbell",
-            "Barbell",
-            "Shoulder Press Machine",
-            "Gym Bench",
+            "Chess Press Hammer",
+            "Dips Machine",
+            "Dumbbell & Barbell",
+            "Elliptical",
+            "Lat Pulldown-Seated Row Dual Machine",
             "Lateral Raise Machine",
-            "Squat Rack",
+            "Leg Abduction Machine",
+            "Leg Press Machine",
+            "Leg-Hamstring Curl Machine",
+            "Pectoral Fly Machine",
+            "Preacher Curl",
+            "Shoulder Press Machine",
+            "Smith & Multipurpose Machine",
+            "Stationary Bike",
+            "Treadmill"
 
 
         )
@@ -145,49 +138,39 @@ class EquipmentDetectionFragment : Fragment() {
                         if(percentage.max()>70){
                             equipment = equipmentList.get(percentage.indexOf(percentage.max()) )
 
+                            val equipmentArray = if (equipment.contains("&")) {
+                                equipment.split("&").map { it.trim() }.toTypedArray()
+                            } else {
+                                arrayOf(equipment)
+                            }
+                            val myEquipments = ArrayList<Equipment>()
+                            for(detectedEquipment in equipmentArray) {
 
-                            Log.d("Jinitaimei",equipment)
-                            loadData(equipment, object : LoadDataCallback {
-                                override fun onEquipmentLoaded(equipment: Equipment) {
-                                    Log.d("jinijini","bangkala")
-                                    if (equipment != null) {
-                                        var image = view.findViewById<ImageView>(R.id.resultimg)
-                                        var name = view.findViewById<TextView>(R.id.eqName)
-                                        var desc = view.findViewById<TextView>(R.id.resultDesc)
+                                loadData(detectedEquipment, object : LoadDataCallback {
+                                    override fun onEquipmentLoaded(equipment: Equipment) {
+                                        if (equipment != null) {
+                                            myEquipments.add(equipment)
+                                            Log.d("jini",   myEquipments.size.toString())
 
-                                        var imageUrl = equipment.imageURL
-                                        imageUrl += ".png?alt=media&token=ea2f07c3-17ad-4d1a-907b-6a7c008608cc"
-                                        Log.e(TAG,imageUrl)
-                                        Picasso.get().load(imageUrl).into(image)
-
-                                        name.text = equipment.name
-                                        desc.text = equipment.description.take(95)+"..."
-
-                                        result.setOnClickListener {
-                                            val bundle = Bundle()
-                                            bundle.putString("equipmentName", equipment.name)
-                                            navigator.navigate(R.id.action_equipmentDetectionFragment_to_equipmentDetailsFragment, bundle)
                                         }
 
-
-                                        GlobalScope.launch(Dispatchers.Main) {
-                                            // Introduce a 3-second delay
-                                            delay(3000)
-                                            status.text = "Detection Complete"
-                                            loading.visibility = View.INVISIBLE
-                                            result.visibility = View.VISIBLE
-                                        }
-
-
-                                    } else {
-                                        // Handle the case where no exercise was found
                                     }
-                                }
 
-                                override fun onError(exception: Exception) {
-                                    // Handle the error, such as displaying an error message
-                                }
-                            })
+                                    override fun onError(exception: Exception) {
+
+                                    }
+                                })
+                            }
+                            alternateEquipment.adapter = DetectionAlternateAdapter(myEquipments, navigator)
+                            GlobalScope.launch(Dispatchers.Main) {
+                                delay(3000)
+                                status.text = "Detection Successfull!!"
+                                loading.visibility = View.INVISIBLE
+                                alternate.visibility = View.VISIBLE
+
+
+                            }
+
 
                         }else{
                             val indexedPercentage = percentage.mapIndexed { index, value -> Pair(index, value) }
@@ -247,7 +230,7 @@ class EquipmentDetectionFragment : Fragment() {
 
         }
 
-        model = MyModel(requireContext(), "fit99v2.tflite")
+        model = MyModel(requireContext(), "resmodel.pt")
         return view
     }
 

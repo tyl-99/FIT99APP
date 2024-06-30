@@ -8,10 +8,10 @@
     android:paddingBottom="60dp"
     tools:context=".WorkoutConfirmation">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="70dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Label"
@@ -59,9 +59,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Exercises"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/name">
+            android:layout_height="0dp"
+            android:layout_below="@id/Label"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Label">
+
 
             <TextView
                 android:id="@+id/exerciseLabel"
@@ -80,7 +85,7 @@
                 android:id="@+id/workoutExercises"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:paddingBottom="60dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -90,8 +95,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/start"
