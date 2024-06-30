@@ -43,7 +43,7 @@
                 android:layout_marginEnd="40dp"
                 android:adjustViewBounds="false"
                 android:gravity="center_horizontal"
-                android:scaleType="centerCrop"
+                android:scaleType="fitStart"
                 android:src="@mipmap/all_exercise_foreground"
                 android:tag="all"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,61 +51,64 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mytext"
                 app:layout_constraintWidth_percent="0.8"
-                app:srcCompat="@mipmap/all_exercise_foreground" />
+                app:srcCompat="@drawable/exercises" />
 
             <ImageView
                 android:id="@+id/leg"
                 android:layout_width="0dp"
                 android:layout_height="165dp"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="-5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
                 android:adjustViewBounds="false"
                 android:gravity="center_horizontal"
-                android:scaleType="centerCrop"
+                android:scaleType="fitStart"
                 android:src="@mipmap/leg_exercise_foreground"
                 android:tag="Leg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/all"
-                app:layout_constraintWidth_percent="0.8" />
+                app:layout_constraintWidth_percent="0.8"
+                app:srcCompat="@drawable/leg_exercises" />
 
             <ImageView
                 android:id="@+id/cardio"
                 android:layout_width="0dp"
                 android:layout_height="165dp"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="-5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
                 android:adjustViewBounds="false"
                 android:gravity="center_horizontal"
-                android:scaleType="centerCrop"
+                android:scaleType="fitStart"
                 android:src="@mipmap/cardio_exercise_foreground"
                 android:tag="Cardio and Stretch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/leg"
-                app:layout_constraintWidth_percent="0.8" />
+                app:layout_constraintWidth_percent="0.8"
+                app:srcCompat="@drawable/cardio" />
 
             <ImageView
                 android:id="@+id/ab"
                 android:layout_width="0dp"
                 android:layout_height="165dp"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="-5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
                 android:adjustViewBounds="false"
                 android:gravity="center_horizontal"
-                android:scaleType="centerCrop"
+                android:scaleType="fitStart"
                 android:src="@mipmap/ab_exercise_foreground"
                 android:tag="Abs"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardio"
-                app:layout_constraintWidth_percent="0.8" />
+                app:layout_constraintWidth_percent="0.8"
+                app:srcCompat="@drawable/ab_exercises" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

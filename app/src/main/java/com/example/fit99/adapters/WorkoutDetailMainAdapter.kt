@@ -32,17 +32,19 @@ class WorkoutDetailMainAdapter(private val context: Context, private val myList:
         private val imageView: ImageView = itemView.findViewById(R.id.image)
         private val textView: TextView = itemView.findViewById(R.id.name)
         private val reps: TextView = itemView.findViewById(R.id.reps)
+        private val sets: TextView = itemView.findViewById(R.id.sets)
 
         fun bind(preview : ExercisePreview) {
             var imageUrl = preview.imageResId.replace(".mp4",".png")
             imageUrl += "?alt=media&token=ea2f07c3-17ad-4d1a-907b-6a7c008608cc"
             Picasso.get().load(imageUrl).into(imageView)
             textView.text = preview.name
+            sets.text = preview.sets + " Sets"
             if(preview.mode == "Reps"){
                 reps.text = "${preview.reps} Reps"
             }
             else{
-                reps.text = "${preview.reps} Seconds"
+                reps.text = "${preview.reps} S"
             }
         }
     }

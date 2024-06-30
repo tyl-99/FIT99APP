@@ -7,23 +7,23 @@
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="10dp"
     android:background="@color/colorBlack"
-    android:padding="2dp">
+    android:paddingLeft="3dp">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="2dp"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
         android:paddingBottom="5dp"
         app:layout_constraintTop_toBottomOf="@id/image"
         tools:layout_editor_absoluteX="1dp">
@@ -38,21 +38,45 @@
             android:lines="2"
             android:paddingBottom="0dp"
             android:text="Bench Press"
-            android:textColor="@color/colorBlue3"
+            android:textColor="@color/colorWhite"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/reps"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/montserrat_medium"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/workout_details_border_radius"
+            android:backgroundTint="@color/colorBlue3"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:text="10 Reps"
             android:textColor="@color/colorWhite"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/sets"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/workout_details_border_radius"
+            android:backgroundTint="@color/colorWhite"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:text="5 Sets"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@id/reps"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
