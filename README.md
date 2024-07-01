@@ -19,7 +19,7 @@ FIT99 is a versatile fitness application primarily focused on workout tracking a
 
 ## Screenshots
 ![image](https://github.com/tyl-99/FIT99APP/assets/71328888/7a54d7e5-1101-4400-aa5a-0621284f648d)
-![image](https://github.com/tyl-99/FIT99APP/assets/71328888/b7c3df3f-d322-4198-9e35-8d78c77fa409)
+![image](https://github.com/tyl-99/FIT99APP/assets/71328888/eff05b92-df60-4cb5-a528-c04148dc4a44)
 ![image](https://github.com/tyl-99/FIT99APP/assets/71328888/315dd059-b7c6-4636-b22f-045780f32ccd)
 ![image](https://github.com/tyl-99/FIT99APP/assets/71328888/6af48603-b451-420b-a7d0-5923a70d7926)
 
