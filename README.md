@@ -17,3 +17,11 @@ FIT99 is a versatile fitness application primarily focused on workout tracking a
 - **Kotlin**: The app is built using Kotlin, ensuring a robust and efficient codebase. Kotlin's modern syntax and features enable the development of a high-quality, user-friendly application.
 - **PyTorch**: The equipment detection feature is powered by PyTorch and employs the ResNet34 model. This deep learning framework provides the necessary tools for implementing and training sophisticated machine learning models, enhancing the app's functionality and accuracy.
 
+## Screenshots
+![image](https://github.com/tyl-99/FIT99APP/assets/71328888/7a54d7e5-1101-4400-aa5a-0621284f648d)
+![image](https://github.com/tyl-99/FIT99APP/assets/71328888/b7c3df3f-d322-4198-9e35-8d78c77fa409)
+![image](https://github.com/tyl-99/FIT99APP/assets/71328888/315dd059-b7c6-4636-b22f-045780f32ccd)
+![image](https://github.com/tyl-99/FIT99APP/assets/71328888/6af48603-b451-420b-a7d0-5923a70d7926)
+
+
+
